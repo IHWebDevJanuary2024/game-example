@@ -16,7 +16,11 @@ const game = new Game(5);
 function gameLoop (){
     game.frames++;
     game.player.crashTest()
-    if(game.frames % 100 === 0){
+    if (game.frames % 10 === 0) {
+        game.score++;
+        game.updateScore();
+    }
+    if(game.frames % 50 === 0){
         game.enemies.push(new Enemy(10));
         console.log(game.enemies);
     }

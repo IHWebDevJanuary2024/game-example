@@ -7,8 +7,12 @@ class Game {
         this.gameOver = false;
         this.lives = lives;
         this.updateLives();
+        this.updateScore();
     }
     updateLives() {
         document.querySelector("#lives").innerText = this.lives;
+    }
+    updateScore() {
+        document.querySelector("#score").innerText = this.score;
     }
 }
