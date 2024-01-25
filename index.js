@@ -12,21 +12,45 @@ const game = new Game(5);
     myEnemy.checkForBoundaries()
 }, 30) */
 
+let enemyCreationFrame = 50;
+let scoreIncrementFrame = 10;
+let enemyVelocity = 10;
 
-function gameLoop (){
+
+function checkGameOver(game) {
+    if (game.gameOver || game.lives < 0) {
+        game.gameOver = true;
+        alert("Game Over");
+        return true;
+    }
+    return false;
+}
+
+function createEnemy(game) {
+    if (game.frames % enemyCreationFrame === 0) {
+        game.enemies.push(new Enemy(enemyVelocity));
+        console.log(game.enemies);
+    }
+}
+
+function gameLoop() {
+    if (checkGameOver(game)) {
+        return;
+    }
+
     game.frames++;
-    game.player.crashTest()
-    if (game.frames % 10 === 0) {
+    game.player.crashTest();
+
+    if (game.frames % scoreIncrementFrame === 0) {
         game.score++;
         game.updateScore();
     }
-    if(game.frames % 50 === 0){
-        game.enemies.push(new Enemy(10));
-        console.log(game.enemies);
-    }
-    game.enemies.forEach((enemy)=>{
+
+    createEnemy(game);
+
+    game.enemies.forEach((enemy) => {
         enemy.move()
-        enemy.checkForBoundaries()    
+        enemy.checkForBoundaries()
     })
     requestAnimationFrame(gameLoop); // we can create an infinite loop without braking it;
 }
@@ -34,6 +58,8 @@ function gameLoop (){
 requestAnimationFrame(gameLoop);
 
 document.addEventListener("keydown", (event) => {
-    console.log(event.key);
+    if (game.gameOver === true) {
+        return;
+    }
     game.player.move(event.key);
 })
