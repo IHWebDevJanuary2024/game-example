@@ -52,6 +52,9 @@ class Player {
                 this.y + this.height > enemy.y
             ) {
                 console.log("crash");
+                game.lives--;
+                game.updateLives();
+                enemy.remove();
             }
         });
     }

@@ -18,9 +18,12 @@ class Enemy {
     }
     checkForBoundaries() {
         if (this.x <= 0 - this.width) {
-            this.element.remove()
-            const enemyIndex = game.enemies.indexOf(this) // Where am I?
-            game.enemies.splice(enemyIndex, 1);
+            this.remove();
         }
+    }
+    remove() {
+        this.element.remove()
+        const enemyIndex = game.enemies.indexOf(this) // Where am I?
+        game.enemies.splice(enemyIndex, 1);
     }
 }

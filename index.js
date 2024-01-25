@@ -6,7 +6,7 @@ console.log(boardElement.getBoundingClientRect()) // that's how we get the width
 const boardWidth = boardElement.getBoundingClientRect().width;
 const boardHeight = boardElement.getBoundingClientRect().height;
 
-const game = new Game();
+const game = new Game(5);
 /* setInterval(() => {
     myEnemy.move()
     myEnemy.checkForBoundaries()
