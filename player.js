@@ -2,6 +2,7 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.velocity = 10
         this.element = document.querySelector("#player");
         this.width = this.element.getBoundingClientRect().width;
         this.height = this.element.getBoundingClientRect().height;
@@ -11,16 +12,16 @@ class Player {
     move(direction) {
         switch (direction) {
             case "ArrowUp":
-                this.y -= 10;
+                this.y -= this.velocity;
                 break;
             case "ArrowDown":
-                this.y += 10;
+                this.y += this.velocity;
                 break;
             case "ArrowLeft":
-                this.x -= 10;
+                this.x -= this.velocity;
                 break;
             case "ArrowRight":
-                this.x += 10;
+                this.x += this.velocity;
                 break;
         };
 
@@ -45,13 +46,26 @@ class Player {
     }
     crashTest() {
         game.enemies.forEach((enemy) => {
+            // HUMAN READABLE 😅
+            const enemyLeftEdge = enemy.x;
+            const enemyRightEdge = enemy.x + enemy.width;
+            const enemyTopEdge = enemy.y;
+            const enemyBottomEdge = enemy.y + enemy.height;
+
+            const playerLeftEdge = this.x;
+            const playerRightEdge = this.x + this.width;
+            const playerTopEdge = this.y;
+            const playerBottomEdge = this.y + this.height;
+
             if (
-                this.x < enemy.x + enemy.width &&
-                this.x + this.width > enemy.x &&
-                this.y < enemy.y + enemy.height &&
-                this.y + this.height > enemy.y
+                playerLeftEdge < enemyRightEdge &&
+                playerRightEdge > enemyLeftEdge &&
+                playerTopEdge < enemyBottomEdge &&
+                playerBottomEdge > enemyTopEdge
             ) {
-                console.log("crash");
+                game.lives -= 1;
+                game.updateLives();
+                enemy.deSpawn();
             }
         });
     }
