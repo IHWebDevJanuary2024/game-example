@@ -10,6 +10,7 @@ console.log(boardElement.getBoundingClientRect()) // that's how we get the width
 
 const boardWidth = boardElement.getBoundingClientRect().width;
 const boardHeight = boardElement.getBoundingClientRect().height;
+const gameOverElement = document.querySelector("#game-over");
 
 const game = new Game(gameLives);
 
@@ -39,8 +40,10 @@ function gameLoop() {
             enemy.checkForBoundaries()
         })
         requestAnimationFrame(gameLoop); // we can create an infinite loop without braking it;
-    } else {
+    } else { // IF THE GAME IS OVER
+        gameOverElement.style.display = "block";
         game.player.element.remove();
+        document.querySelector("#final-score").innerText = game.score;
     }
 }
 

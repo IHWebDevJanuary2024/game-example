@@ -1,6 +1,5 @@
 class Enemy {
     constructor(velocity) {
-
         this.velocity = velocity;
         this.element = document.createElement("div");
         this.element.classList.add("enemy");
@@ -8,7 +7,7 @@ class Enemy {
         this.width = this.element.getBoundingClientRect().width;
         this.height = this.element.getBoundingClientRect().height;
         this.x = boardWidth;
-        this.y = Math.floor(Math.random() * (boardHeight - this.height))
+        this.y = Math.floor(Math.random() * ((boardHeight * 0.75 - this.height) - boardHeight * 0.25) + boardHeight * 0.25)
         this.element.style.left = `${this.x}px`
         this.element.style.top = `${this.y}px`
     }
