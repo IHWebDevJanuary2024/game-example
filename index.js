@@ -14,7 +14,7 @@ const boardHeight = boardElement.getBoundingClientRect().height;
 const game = new Game(gameLives);
 
 /*
- 
+
 setInterval(() => {
     myEnemy.move()
     myEnemy.checkForBoundaries()
@@ -41,6 +41,7 @@ function gameLoop() {
         requestAnimationFrame(gameLoop); // we can create an infinite loop without braking it;
     } else {
         game.player.element.remove();
+        document.getElementById("game-over").style.display = "block";
     }
 }
 

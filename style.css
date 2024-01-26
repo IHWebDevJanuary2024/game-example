@@ -33,3 +33,12 @@ body {
     height: 117px;
     background-color: rgb(142, 84, 219);
 }
+
+#game-over{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translateX(-50%) translateY(50%);
+    background-color: rgb(255, 255, 255);
+}
