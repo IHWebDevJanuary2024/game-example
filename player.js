@@ -2,14 +2,19 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.velocity = 10
+        this.velocity = 5
+        this.direction = "none"
         this.element = document.querySelector("#player");
         this.width = this.element.getBoundingClientRect().width;
         this.height = this.element.getBoundingClientRect().height;
         this.element.style.left = `${this.x}px`
         this.element.style.top = `${this.y}px`
     }
-    move(direction) {
+    setDirection(diretction) {
+        this.direction = diretction;
+    }
+    move() {
+        const direction = this.direction;
         switch (direction) {
             case "ArrowUp":
                 this.y -= this.velocity;
@@ -23,6 +28,10 @@ class Player {
             case "ArrowRight":
                 this.x += this.velocity;
                 break;
+            case "none":
+                this.x = this.x;
+                this.y = this.y;
+                break;
         };
 
         this.checkForBoundaries()
@@ -34,11 +43,11 @@ class Player {
         if (this.x <= 0) {
             this.x = 0;
         }
-        if (this.y <= 0) {
-            this.y = 0;
+        if (this.y <= boardHeight * 0.20) {
+            this.y = boardHeight * 0.20;
         }
-        if (this.y >= boardHeight - this.height) {
-            this.y = boardHeight - this.height;
+        if (this.y >= boardHeight * 0.75- this.height) {
+            this.y = boardHeight * 0.75 - this.height;
         }
         if (this.x >= boardWidth - this.width) {
             this.x = boardWidth - this.width;

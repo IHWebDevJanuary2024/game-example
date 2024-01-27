@@ -27,6 +27,7 @@ function gameLoop() {
     if (!game.gameOver) {
         game.frames++;
         game.player.crashTest()
+        game.player.move();
         if (game.frames % enemyCreationFrame === 0) {
             game.enemies.push(new Enemy(enemyVelocity));
             console.log(game.enemies);
@@ -52,6 +53,12 @@ requestAnimationFrame(gameLoop);
 
 document.addEventListener("keydown", (event) => {
     if (!game.gameOver) {
-        game.player.move(event.key);
+        game.player.setDirection(event.key);
+    }
+})
+document.addEventListener("keyup", (event) => {
+    console.log("keyup");
+    if (!game.gameOver) {
+        game.player.setDirection("none");
     }
 })
