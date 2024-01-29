@@ -61,7 +61,7 @@ git checkout -b enemy-class
 - Don't focus on the design of the game, focus on the functionality. Once you have the game working, you can add styles to it.
 - console.log() is your best friend. Use it to debug your code.
 
-## Use of chatGPT
-- The use of AI is permitted in this project. But copy pasting without understanding the code is penalized. If a part of the code seems to be out of the scope of the course, you will be asked to explain it.
-- You can use the chatGPT code as a reference, but you need to understand it and write your own code.
+## Use of chatGPT or other AI tools / copy pasting
+- The use of AI and other tools is permitted in this project. But copy pasting without understanding the code is penalized. If a part of the code seems to be out of the scope of the course, you will be asked to explain it.
+- You can use the code that you find or the AI generates as a reference, but you need to understand it and write your own version.
 - If you get stuck, you can ask for help in person with real humanoids 🤖
