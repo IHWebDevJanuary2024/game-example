@@ -99,6 +99,7 @@ class Player {
         playerBottomEdge > enemyTopEdge
       ) {
         game.lives -= 1;
+        shakeBoard();
         game.updateLives();
         enemy.deSpawn();
       }

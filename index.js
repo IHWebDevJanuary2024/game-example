@@ -14,6 +14,13 @@ const gameOverElement = document.querySelector("#game-over");
 
 const game = new Game(gameLives);
 
+function shakeBoard() {
+  boardElement.style.animation = "shake 0.5s";
+  setTimeout(() => {
+    boardElement.style.animation = "";
+  }, 500);
+}
+
 /*
  
 setInterval(() => {
